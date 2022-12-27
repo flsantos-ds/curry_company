@@ -94,7 +94,12 @@ def clean_code(df):
 def order_metric(df):
     # criar o gráfico
     order_by_date = df.loc[:,['ID', 'Order_Date']].groupby('Order_Date').count().reset_index()
-    fig = px.bar(order_by_date, x='Order_Date', y='ID')
+    fig = px.bar(order_by_date,
+                 x='Order_Date',
+                 y='ID',
+                 labels={'Order_Date': 'Date', 'ID': 'Order Quantity'},
+                 template='plotly_white',
+                 labels={'week_of_year': 'Week of Year', 'ID':'Order Quantity'})
 
     return fig
 
@@ -131,7 +136,12 @@ def traffic_order_city(df):
                                         .count()
                                         .reset_index())
 
-    fig = px.scatter(delivery_by_city_by_road_traffic, x='City', y='Road_traffic_density', size='ID', color='City')
+    fig = px.scatter(delivery_by_city_by_road_traffic,
+                     x='City',
+                     y='Road_traffic_density',
+                     size='ID',
+                     color='City',
+                     template='plotly_white')
                 
     return fig
 
@@ -162,7 +172,11 @@ def order_share_by_week(df):
                                                        delivery_by_week_by_person['Delivery_person_ID'])
 
     # plotar o gráfico de linhas
-    fig = px.line(delivery_by_week_by_person, x='week_of_year', y='order_by_delivery')
+    fig = px.line(delivery_by_week_by_person,
+                  x='week_of_year',
+                  y='order_by_delivery',
+                  template='plotly_white',
+                  labels={'week_of_year': 'Week of Year', 'order_by_delivery':'Order Quantity'})
 
     return fig
 
