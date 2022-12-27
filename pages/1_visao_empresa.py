@@ -98,8 +98,7 @@ def order_metric(df):
                  x='Order_Date',
                  y='ID',
                  labels={'Order_Date': 'Date', 'ID': 'Order Quantity'},
-                 template='plotly_white',
-                 labels={'week_of_year': 'Week of Year', 'ID':'Order Quantity'})
+                 template='plotly_white')
 
     return fig
 
